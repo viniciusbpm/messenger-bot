@@ -1,7 +1,7 @@
 package br.com.ubots.messengerbot.controller;
 
 import br.com.ubots.messengerbot.controller.request.FulfillmentRequest;
-import br.com.ubots.messengerbot.controller.request.SendFulfullmentRequest;
+import br.com.ubots.messengerbot.controller.response.SendFulfillmentResponse;
 import br.com.ubots.messengerbot.service.SendFulfillmentService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +18,7 @@ public class DialogflowController {
     }
 
     @PostMapping
-    public SendFulfullmentRequest intent(@RequestBody FulfillmentRequest request){
+    public SendFulfillmentResponse intent(@RequestBody FulfillmentRequest request){
         return sendFulfillmentService.send(request);
     }
 }

@@ -7,6 +7,6 @@ import java.util.List;
 
 @Getter
 @Setter
-public class CurrentWeatherResponse {
+public class WeatherResponse {
     private List<WeatherDataResponse> data;
 }
