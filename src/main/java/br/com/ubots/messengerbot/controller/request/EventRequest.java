@@ -1,4 +1,4 @@
-package br.com.ubots.messengerbot.request;
+package br.com.ubots.messengerbot.controller.request;
 
 import lombok.Getter;
 import lombok.Setter;

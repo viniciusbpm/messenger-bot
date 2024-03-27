@@ -1,4 +1,4 @@
-package br.com.ubots.messengerbot.request;
+package br.com.ubots.messengerbot.controller.request;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,5 +10,5 @@ import java.util.List;
 public class MessageEventRequest {
     private String id;
     private Long time;
-    private List<UserMessageRequest> messaging;
+    private List<ReceivedMessageRequest> messaging;
 }

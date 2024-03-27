@@ -1,4 +1,4 @@
-package br.com.ubots.messengerbot.request;
+package br.com.ubots.messengerbot.controller.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class IdRequest {
-    private String id;
+public class FulfillmentMessageRequest {
+    private FulfillmentTextRequest text;
 }

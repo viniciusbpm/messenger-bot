@@ -1,22 +1,28 @@
 package br.com.ubots.messengerbot.controller;
 
-import br.com.ubots.messengerbot.request.EventRequest;
+import br.com.ubots.messengerbot.builders.EventRequestShortenedBuilder;
+import br.com.ubots.messengerbot.controller.request.EventRequestShortened;
+import br.com.ubots.messengerbot.controller.request.EventRequest;
+import br.com.ubots.messengerbot.controller.response.SendMessageResponse;
 import br.com.ubots.messengerbot.service.SendMessageService;
 import br.com.ubots.messengerbot.service.VerifyRequestService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/webhook")
+@RequestMapping("webhook")
 public class MessageController {
-    @Autowired
-    private SendMessageService sendMessageService;
-    @Autowired
-    private VerifyRequestService verifyRequestService;
+    private final SendMessageService sendMessageService;
+    private final VerifyRequestService verifyRequestService;
+
+    public MessageController(SendMessageService sendMessageService, VerifyRequestService verifyRequestService) {
+        this.sendMessageService = sendMessageService;
+        this.verifyRequestService = verifyRequestService;
+    }
 
     @PostMapping
-    public void sendMessage(@RequestBody EventRequest request){
-        sendMessageService.send(request);
+    public SendMessageResponse sendMessage(@RequestBody EventRequest request){
+        EventRequestShortened requestShortened = EventRequestShortenedBuilder.build(request);
+        return sendMessageService.send(requestShortened);
     }
 
     @GetMapping
