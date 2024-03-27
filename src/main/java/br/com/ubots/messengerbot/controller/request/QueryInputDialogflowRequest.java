@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class FulfillmentRequest {
-    private QueryResultRequest queryResult;
+public class QueryInputDialogflowRequest {
+    private QueryInputTextDialogflowRequest text;
 }

@@ -1,8 +1,8 @@
 package br.com.ubots.messengerbot.controller;
 
 import br.com.ubots.messengerbot.builders.EventRequestShortenedBuilder;
-import br.com.ubots.messengerbot.controller.request.EventRequestShortened;
 import br.com.ubots.messengerbot.controller.request.EventRequest;
+import br.com.ubots.messengerbot.controller.request.EventRequestShortened;
 import br.com.ubots.messengerbot.controller.response.SendMessageResponse;
 import br.com.ubots.messengerbot.service.SendMessageService;
 import br.com.ubots.messengerbot.service.VerifyRequestService;
