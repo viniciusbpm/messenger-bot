@@ -7,8 +7,10 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,12 +22,16 @@ public class WeatherRequestService {
 
     public List<CityResponse> getCity(String city) {
         String url = getCityUrl(city);
-        ResponseEntity<List<CityResponse>> cityListResponse =
-                REST_TEMPLATE.exchange(
-                        url, HttpMethod.GET, null,
-                        new ParameterizedTypeReference<>() {}
-                );
-        return cityListResponse.getBody();
+        try{
+            ResponseEntity<List<CityResponse>> cityListResponse =
+                    REST_TEMPLATE.exchange(
+                            url, HttpMethod.GET, null,
+                            new ParameterizedTypeReference<>() {}
+                    );
+            return cityListResponse.getBody();
+        } catch (HttpClientErrorException exception){
+            return new ArrayList<>();
+        }
     }
 
     public WeatherResponse getWeather(CityResponse city, long time) {

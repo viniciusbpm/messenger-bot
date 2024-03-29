@@ -1,19 +1,22 @@
 package br.com.ubots.messengerbot.utils;
 
 import com.google.api.gax.rpc.ApiException;
-import com.google.cloud.dialogflow.v2.DetectIntentResponse;
-import com.google.cloud.dialogflow.v2.QueryInput;
-import com.google.cloud.dialogflow.v2.QueryResult;
-import com.google.cloud.dialogflow.v2.SessionName;
-import com.google.cloud.dialogflow.v2.SessionsClient;
-import com.google.cloud.dialogflow.v2.TextInput;
+import com.google.cloud.dialogflow.v2.*;
+
 import java.io.IOException;
 
 public class DetectIntentTexts {
-    public static String getResponse(String message)
+    private static final String PROJECT_ID = "seu-madruga-uii9";
+    private static final String SESSION_ID = "123456789";
+    public static Intent getIntent(String message)
             throws IOException, ApiException {
+        QueryResult queryResult = getQueryResult(message);
+        return queryResult.getIntent();
+    }
+
+    private static QueryResult getQueryResult(String message) throws IOException, ApiException {
         try (SessionsClient sessionsClient = SessionsClient.create()) {
-            SessionName session = SessionName.of("seu-madruga-uii9", "123456789");
+            SessionName session = SessionName.of(PROJECT_ID, SESSION_ID);
 
                 TextInput.Builder textInput =
                         TextInput.newBuilder().setText(message).setLanguageCode("pt-BR");
@@ -22,8 +25,7 @@ public class DetectIntentTexts {
 
                 DetectIntentResponse response = sessionsClient.detectIntent(session, queryInput);
 
-                QueryResult queryResult = response.getQueryResult();
-                return queryResult.getFulfillmentMessages(0).getText().getText(0);
+            return response.getQueryResult();
         }
     }
 }

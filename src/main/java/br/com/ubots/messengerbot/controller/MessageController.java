@@ -1,8 +1,6 @@
 package br.com.ubots.messengerbot.controller;
 
-import br.com.ubots.messengerbot.builders.EventRequestShortenedBuilder;
 import br.com.ubots.messengerbot.controller.request.EventRequest;
-import br.com.ubots.messengerbot.controller.request.EventRequestShortened;
 import br.com.ubots.messengerbot.controller.response.SendMessageResponse;
 import br.com.ubots.messengerbot.service.SendMessageService;
 import br.com.ubots.messengerbot.service.VerifyRequestService;
@@ -21,8 +19,7 @@ public class MessageController {
 
     @PostMapping
     public SendMessageResponse sendMessage(@RequestBody EventRequest request){
-        EventRequestShortened requestShortened = EventRequestShortenedBuilder.build(request);
-        return sendMessageService.send(requestShortened);
+        return sendMessageService.send(request);
     }
 
     @GetMapping
