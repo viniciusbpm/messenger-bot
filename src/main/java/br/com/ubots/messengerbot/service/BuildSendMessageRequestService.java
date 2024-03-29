@@ -1,6 +1,6 @@
 package br.com.ubots.messengerbot.service;
 
-import br.com.ubots.messengerbot.controller.request.EventRequestShortened;
+import br.com.ubots.messengerbot.controller.request.EventRequest;
 import br.com.ubots.messengerbot.controller.request.IdRequest;
 import br.com.ubots.messengerbot.controller.request.MessageTextRequest;
 import br.com.ubots.messengerbot.controller.request.SendMessageRequest;
@@ -14,7 +14,7 @@ public class BuildSendMessageRequestService {
         this.responseStrategyService = responseStrategyService;
     }
 
-    public SendMessageRequest build(EventRequestShortened request){
+    public SendMessageRequest build(EventRequest request){
         String receivedMessage = request.getReceivedMessage();
 
         SendMessageRequest sendMessageRequest = new SendMessageRequest();

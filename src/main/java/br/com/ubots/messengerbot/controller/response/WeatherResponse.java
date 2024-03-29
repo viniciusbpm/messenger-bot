@@ -9,4 +9,8 @@ import java.util.List;
 @Setter
 public class WeatherResponse {
     private List<WeatherDataResponse> data;
+
+    public double getTemperature(){
+        return data.get(0).getTemp();
+    }
 }

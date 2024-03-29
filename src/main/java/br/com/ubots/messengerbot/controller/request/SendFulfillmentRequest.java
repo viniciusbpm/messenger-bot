@@ -11,6 +11,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SendFulfullmentRequest {
+public class SendFulfillmentRequest {
     private List<FulfillmentMessageRequest> fulfillmentMessages;
 }

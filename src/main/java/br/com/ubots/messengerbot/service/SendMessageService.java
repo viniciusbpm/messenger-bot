@@ -1,6 +1,6 @@
 package br.com.ubots.messengerbot.service;
 
-import br.com.ubots.messengerbot.controller.request.EventRequestShortened;
+import br.com.ubots.messengerbot.controller.request.EventRequest;
 import br.com.ubots.messengerbot.controller.request.SendMessageRequest;
 import br.com.ubots.messengerbot.controller.response.SendMessageResponse;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +22,7 @@ public class SendMessageService {
         this.buildSendMessageRequestService = buildSendMessageRequestService;
     }
 
-    public SendMessageResponse send(EventRequestShortened request){
+    public SendMessageResponse send(EventRequest request){
         SendMessageRequest sendMessageRequest = buildSendMessageRequestService.build(request);
         String url = getUrlWithPageId(request.getPageId());
         return sendPostRequestToUrl(sendMessageRequest, url);
