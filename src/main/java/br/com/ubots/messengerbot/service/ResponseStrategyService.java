@@ -13,7 +13,7 @@ import static java.util.Arrays.asList;
 @Service
 public class ResponseStrategyService {
     private static final String DEFAULT_RESPONSE = "Não sei como responder isso";
-    private static List<ResponseHandler> RESPONSE_HANDLERS = new ArrayList<>();
+    private static List<ResponseHandler> RESPONSE_HANDLERS;
 
     public ResponseStrategyService(){
         RESPONSE_HANDLERS = asList(

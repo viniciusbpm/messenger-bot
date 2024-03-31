@@ -50,6 +50,7 @@ public class WeatherRequestService {
                 + "lat=" + city.getLat()
                 + "&lon=" + city.getLon()
                 + "&dt=" + time
+                + "&units=metric"
                 + "&appid=" + apiKey;
     }
 }
