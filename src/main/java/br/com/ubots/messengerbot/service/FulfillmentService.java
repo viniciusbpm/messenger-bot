@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import static br.com.ubots.messengerbot.utils.ConvertTemperature.convertTemperatureFromKelvinToCelsius;
+import static java.lang.Math.round;
 
 @Service
 public class FulfillmentService {
@@ -55,7 +55,7 @@ public class FulfillmentService {
                     WeatherResponseHandler.getTime()
             );
             WeatherResponseHandler.setWeather(
-                    convertTemperatureFromKelvinToCelsius(weatherResponse.getTemperature())
+                    round(weatherResponse.getTemperature())
             );
         }
     }

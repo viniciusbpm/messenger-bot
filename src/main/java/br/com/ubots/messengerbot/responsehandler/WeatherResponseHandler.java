@@ -14,13 +14,11 @@ public class WeatherResponseHandler implements ResponseHandler {
     private static final String UNKNOWN_CITY_RESPONSE = "Tá me achando com cara de besta? " +
             "Me pergunta sobre uma cidade que existe, burro";
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private static CityResponse city;
     @Setter
     private static long weather = 0L;
-    @Getter
-    @Setter
+    @Getter @Setter
     private static long time = 0L;
 
 
@@ -40,15 +38,22 @@ public class WeatherResponseHandler implements ResponseHandler {
     private String getVerbTense(){
         if(queryDateDayIsToday()){
             return "Está";
-        } else {
-            return "Estava";
+        } else if(queryDateDayIsFuture()){
+            return "Estará";
         }
+        return "Estava";
     }
 
     private boolean queryDateDayIsToday(){
         LocalDate queryDate = getQueryDate();
         LocalDate today = LocalDate.now();
         return queryDate.isEqual(today);
+    }
+
+    private boolean queryDateDayIsFuture() {
+        LocalDate queryDate = getQueryDate();
+        LocalDate today = LocalDate.now();
+        return queryDate.isAfter(today);
     }
 
     private LocalDate getQueryDate(){

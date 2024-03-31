@@ -23,6 +23,6 @@ public class FulfillmentRequest {
     }
 
     private boolean dateIsValid(Timestamp date){
-        return date != null && date.toLocalDateTime().isBefore(LocalDateTime.now());
+        return date != null && date.toLocalDateTime().isBefore(LocalDateTime.now().plusDays(4));
     }
 }
